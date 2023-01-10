@@ -1,44 +1,40 @@
 
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import axios from "axios";
 
-export default function List() {
-    const [data, setData] = useState(null);
-
-
-    useEffect(() => {
-        axios
-            .get("http://localhost/server/room.php")
-            .then(response => {
-                setData(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, []);
-
-    console.log(data)
-
-    let room;
-    if(data){
-        room= data.map((item)=> {
-            return(
-                <div key={item.id}>
-                <h1>{item.room_type}</h1>
-                <img src={item.image} alt="" />
-                <p>{item.description}</p>
-                <p>{item.amenites}</p>
-                </div>
-            )
-        })
-    } else{
-        <p>None</p>
-    }
-
-
+export default function List(props) {
+    
     return (
         <div>
-            {room}
+            {
+                Object.values(props).map((item) => {
+                    return (
+                        <div key={item.room_id}>
+                            <img src={item.image} alt="" />
+                            
+                            <h1>{item.room_type}</h1>
+                            <p>{item.description}</p>
+                            <p>{item.rate}</p>
+                            {item.amenites.map((i) => {
+                                return (
+                                    <ul>
+                                    <li>{i.amenites_0}</li>
+                                    <li>{i.amenites_1}</li>
+                                    <li>{i.amenites_2}</li>
+                                    <li>{i.amenites_3}</li>
+                                    <li>{i.amenites_4}</li>
+                                    <li>{i.amenites_5}</li>
+                                    
+                                    </ul>
+                                    
+                                )
+                            })}
+                            <Link to={`/list/${item.room_id}`}>Reserve</Link>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

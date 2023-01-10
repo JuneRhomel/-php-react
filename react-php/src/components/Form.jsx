@@ -39,19 +39,19 @@ export default function Form() {
 
     return (
         <>
-            <div>
+            <div className='form-data'>
                 <label htmlFor="Name">fullname</label>
-                <input type="text" name="fullname" id="" onChange={(e) => setfullname(e.target.value)} />
+                <input type="text" name="fullname" id="" onChange={(e) => setfullname(e.target.value)} /> <br />
 
                 <label htmlFor="Email">Email</label>
-                <input type="text" name='email' onChange={(e) => setemail(e.target.value)} />
+                <input type="text" name='email' onChange={(e) => setemail(e.target.value)} /> <br />
                 
 
                 <label htmlFor="number">number</label>
-                <input type="text" name='number' onChange={(e) => setnumber(e.target.value)} />
+                <input type="text" name='number' onChange={(e) => setnumber(e.target.value)} /> <br />
 
                 <label htmlFor="Adults">Adults</label>
-                <input type="text" name="adults" id="" onChange={(e) => setadults(e.target.value)} />
+                <input type="text" name="adults" id="" onChange={(e) => setadults(e.target.value)} /> <br />
 
                 <label htmlFor="Children">Children</label>
                 <input type="text" name="children" id="" onChange={(e) => setchildren(e.target.value)} />
